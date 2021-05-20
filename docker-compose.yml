@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  nginx-proxy:
+    build: ./nginx
+    restart: always
+    ports:
+      - 1337:80
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+    env_file:
+      - .env
