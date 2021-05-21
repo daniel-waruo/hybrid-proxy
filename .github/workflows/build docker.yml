@@ -7,6 +7,7 @@ on:
 
 env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/nginx-proxy
+  PORT: 8000
 
 jobs:
   build:
