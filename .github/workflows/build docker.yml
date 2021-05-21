@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  DOCKER_IMAGE: docker.pkg.github.com/${{ lowercase(github.repository) }}/nginx-proxy
+  DOCKER_IMAGE: docker.pkg.github.com/primedev-team/nginx-proxy
   PORT: 8000
 
 jobs:
