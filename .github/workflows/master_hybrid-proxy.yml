@@ -49,4 +49,4 @@ jobs:
         app-name: 'hybrid-proxy'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_e4b06fa6c7f940c49aff18340d52f8be }}
-        images: ghcr.io/daniel-waruo/nginx-proxy:${{ github.sha }}
+        images: nginx-proxy:${{ github.sha }}
