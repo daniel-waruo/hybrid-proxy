@@ -32,7 +32,7 @@ jobs:
       with:
         push: true
         tags: ${{ secrets.AzureAppService_ContainerUsername_697ec4c6ea2e497d93b249139ffe2e44 }}/docker.pkg.github.com/primedev-team/hybrid-proxy/nginx-proxy:${{ github.sha }}
-        file: ./Dockerfile
+        file: ./nginx/Dockerfile.prod
 
   deploy:
     runs-on: ubuntu-latest
