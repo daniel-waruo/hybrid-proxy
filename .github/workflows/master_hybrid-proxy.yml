@@ -41,14 +41,14 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Log in to registry
-        uses: docker/login-action@v1
-        with:
-          registry: https://ghcr.io/
-          username: ${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}
-          password: ${{ secrets.AzureAppService_ContainerPassword_106b785940ea4d78b452d37e26ca4f7f }}
+    - name: Log in to registry
+      uses: docker/login-action@v1
+      with:
+        registry: https://ghcr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_106b785940ea4d78b452d37e26ca4f7f }}
 
-      - name: Deploy to Azure Web App
+    - name: Deploy to Azure Web App
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
