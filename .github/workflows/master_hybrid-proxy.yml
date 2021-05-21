@@ -23,16 +23,15 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://ghcr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_0fee8247b2fe4d83b8ca073159f83ad9 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_388c448263804ff78810311bbbf4c92c }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_106b785940ea4d78b452d37e26ca4f7f }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
-        load: true
-        tags: nginx-proxy:${{ github.sha }}
-        file: ./nginx/Dockerfile.prod
-
+        push: true
+        tags: ${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}/nginx-proxy:${{ github.sha }}
+        file: ./Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,5 +47,5 @@ jobs:
       with:
         app-name: 'hybrid-proxy'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e4b06fa6c7f940c49aff18340d52f8be }}
-        images: nginx-proxy:${{ github.sha }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_ace40496cb774096ab932d6e814094d6 }}
+        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}/nginx-proxy:${{ github.sha }}'
