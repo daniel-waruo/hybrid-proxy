@@ -25,13 +25,15 @@ jobs:
         registry: https://docker.pkg.github.com/
         username: ${{ secrets.AzureAppService_ContainerUsername_697ec4c6ea2e497d93b249139ffe2e44 }}
         password: ${{secrets.DOCKER_TOKEN}}
+        logout: false
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
         tags: ${{ secrets.AzureAppService_ContainerUsername_697ec4c6ea2e497d93b249139ffe2e44 }}/docker.pkg.github.com/primedev-team/hybrid-proxy/nginx-proxy:${{ github.sha }}
         file: ./nginx/Dockerfile.prod
-        github-token : ${{secrets.DOCKER_TOKEN}}
+        secrets: |
+          GIT_AUTH_TOKEN=${{ secrets.DOCKER_TOKEN }}
 
 
   deploy:
