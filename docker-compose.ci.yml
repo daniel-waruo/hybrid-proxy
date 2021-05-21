@@ -2,7 +2,12 @@ version: '3.7'
 
 services:
   nginx-proxy:
-    build: ./nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.prod
+      cache_from:
+        - "${DOCKER_IMAGE}"
+    image: "${DOCKER_IMAGE}"
     restart: always
     ports:
       - ${PORT}:80
@@ -10,3 +15,4 @@ services:
       - ./nginx/templates:/etc/nginx/templates
     env_file:
       - .env
+
