@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         load: true
-        tags: ${{ secrets.AzureAppService_ContainerUsername_0fee8247b2fe4d83b8ca073159f83ad9 }}/ghcr.io/daniel-waruo/nginx-proxy:${{ github.sha }}
+        tags: ghcr.io/daniel-waruo/nginx-proxy:${{ github.sha }}
         file: ./nginx/Dockerfile.prod
 
 
