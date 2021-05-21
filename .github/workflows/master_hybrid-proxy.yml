@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         load: true
-        tags: ghcr.io/daniel-waruo/nginx-proxy:${{ github.sha }}
+        tags: nginx-proxy:${{ github.sha }}
         file: ./nginx/Dockerfile.prod
 
 
