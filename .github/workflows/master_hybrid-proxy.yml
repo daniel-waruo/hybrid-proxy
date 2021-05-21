@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: primedev-team/hybrid-proxy/nginx-proxy:latest
+        tags: docker.pkg.github.com/primedev-team/hybrid-proxy/nginx-proxy:latest
         file: ./nginx/Dockerfile.prod
 
 
