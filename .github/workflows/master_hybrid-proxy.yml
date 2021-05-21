@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         load: true
-        tags: ${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}/nginx-proxy:${{ github.sha }}
+        tags: daniel-waruo/nginx-proxy:${{ github.sha }}
         file: ./nginx/Dockerfile.prod
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'hybrid-proxy'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_ace40496cb774096ab932d6e814094d6 }}
-        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}/nginx-proxy:${{ github.sha }}'
+        images: ghcr.io/daniel-waruo/nginx-proxy:${{ github.sha }}
