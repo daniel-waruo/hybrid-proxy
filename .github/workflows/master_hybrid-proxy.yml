@@ -30,10 +30,8 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ${{ secrets.AzureAppService_ContainerUsername_697ec4c6ea2e497d93b249139ffe2e44 }}/docker.pkg.github.com/primedev-team/hybrid-proxy/nginx-proxy:${{ github.sha }}
+        tags: primedev-team/nginx-proxy:latest
         file: ./nginx/Dockerfile.prod
-        secrets: |
-          "github_token=${{ secrets.DOCKER_TOKEN }}"
 
 
   deploy:
