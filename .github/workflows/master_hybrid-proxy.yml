@@ -32,7 +32,7 @@ jobs:
         load: true
         tags: ${{ secrets.AzureAppService_ContainerUsername_0fee8247b2fe4d83b8ca073159f83ad9 }}/ghcr.io/daniel-waruo/nginx-proxy:${{ github.sha }}
         file: ./nginx/Dockerfile.prod
-      run: docker push ${{ env.IMAGE }}:${{ env.GIT_SHA }}
+
 
   deploy:
     runs-on: ubuntu-latest
