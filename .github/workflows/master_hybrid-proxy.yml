@@ -26,12 +26,10 @@ jobs:
         username: ${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}
         password: ${{ secrets.AzureAppService_ContainerPassword_106b785940ea4d78b452d37e26ca4f7f }}
 
-    - name: Build and push container image to registry
-      uses: docker/build-push-action@v2
-      with:
-        load: true
-        tags: ${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}/nginx-proxy:${{ github.sha }}
-        file: ./nginx/Dockerfile.prod
+    - name: Docker Build & Push to registry
+      run: |
+        docker build -f nginx/Dockerfile -t ghcr.io/${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}/nginx-proxy:${{ github.sha }}
+        docker push ghcr.io/${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}/nginx-proxy:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
