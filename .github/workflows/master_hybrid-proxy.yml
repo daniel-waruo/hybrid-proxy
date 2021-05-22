@@ -54,3 +54,16 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_ace40496cb774096ab932d6e814094d6 }}
         images: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_d8e433bef18c4ff78dfad05615be7fbd }}/nginx-proxy:${{ github.sha }}
+        configuration-file:
+        startup-command: >
+          docker run -d
+          -p $PORT:80
+          --name hybrid-proxy_0_b27ff07b
+          -e WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
+          -e WEBSITE_SITE_NAME=hybrid-proxy
+          -e WEBSITE_AUTH_ENABLED=False
+          -e PORT=$80
+          -e WEBSITE_ROLE_INSTANCE_ID=0
+          -e WEBSITE_HOSTNAME=hybrid-proxy.azurewebsites.net
+          -e WEBSITE_INSTANCE_ID=054e68e4f06a3abf36846d5a25b939aad05f4601cbc4a2f4676cf33727589810
+          ghcr.io/daniel-waruo/nginx-proxy:735d4ad7656240f110c9167abad94caab69a8d22
