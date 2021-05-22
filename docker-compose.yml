@@ -5,7 +5,7 @@ services:
     build: ./nginx
     restart: always
     ports:
-      - ${PORT}:80
+      - ${PORT}:88
     volumes:
       - ./nginx/templates:/etc/nginx/templates
     env_file:
