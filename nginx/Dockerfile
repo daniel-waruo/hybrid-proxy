@@ -1,5 +1,3 @@
-FROM nginx:1.19.0-alpine
-
 COPY ./templates /etc/nginx/templates
 
 # expect a build-time variable
@@ -10,3 +8,5 @@ ENV APP_HOST=$APP_HOST
 ENV APP_PORT=$APP_PORT
 
 CMD sudo fuser -k 80/tcp
+
+FROM nginx:1.19.0-alpine
